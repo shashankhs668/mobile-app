@@ -1,0 +1,222 @@
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";  <!-- Assuming a layout is used -->
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/ad.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <!-- Rounded Image -->
+            <img src="@Url.Content("~/Content/images/profile.jpg")" alt="Profile Image" class="profile-img">
+        </div>
+        <ul class="menu">
+            <li class="@(ViewBag.ActiveMenu == "Dashboard" ? "active" : "")">
+                <a href="@Url.Action("Index", "Dashboard")">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="@(ViewBag.ActiveMenu == "Products" ? "" : "")">
+                <a href="@Url.Action("Index", "Products")">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+            <li class="@(ViewBag.ActiveMenu == "Users" ? "" : "")">
+                <a href="@Url.Action("Index", "Users")">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="@Url.Action("Logout", "Account")">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span>Primary</span>
+                <h2>Dashboard</h2>
+            </div>
+            <div class="user--info">
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search" />
+                </div>
+                <!-- Add a valid image source -->
+                <img src="@Url.Content("~/Content/images/user-image.jpg")" alt="User Image" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body {
+    display: flex;
+    margin: 0;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    padding: 1.7rem 1.7rem;
+    color: #fff;
+    background: rgba(113, 99, 186, 255);
+    transition: all 0.5s linear;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.sidebar:hover {
+    width: 240px;
+    transition: 0.5s;
+}
+
+/* Logo section */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Profile image */
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensure the image fits well in a circular frame */
+}
+
+/* Menu styles */
+.menu {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+}
+.menu li {
+    padding: 1.5rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.menu li:hover,
+.menu li.active {
+    background-color: rgba(224, 224, 224, 0.35);
+}
+.menu a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjusted gap for better spacing */
+}
+.menu a i {
+    font-size: 1.2rem;
+}
+.logout {
+    margin-top: auto;
+    padding: 1.5rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.logout:hover {
+    background-color: rgba(224, 224, 224, 0.35);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    background: #ebe9eb;
+    padding: 1rem;
+}
+
+/* Header styles */
+.header--wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+.header--title {
+    color: rgba(113, 99, 186, 255);
+}
+.header--title h2 {
+    margin: 0;
+}
+.user--info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Search box */
+.search-box {
+    background: rgb(237, 237, 237);
+    border-radius: 15px;
+    color: rgba(113, 99, 186, 255);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
+.search-box input {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    width: 150px;
+}
+.search-box input:focus {
+    outline: none;
+}
+.search-box i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.5s ease-out;
+}
+.search-box i:hover {
+    transform: scale(1.1);
+}
+.header--wrapper img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+

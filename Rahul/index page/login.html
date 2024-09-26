@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login | Ludiflex</title>
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <header>Login</header>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" id="email" placeholder="Email" autocomplete="off" required>
+        </div>
+        <div class="input-box">
+            <input type="password" class="input-field" id="password" placeholder="Password" autocomplete="off" required>
+        </div>
+        <div class="forgot">
+            <section>
+                <input type="checkbox" id="check">
+                <label for="check">Remember me</label>
+            </section>
+            <section>
+                <a href="forgot.html">Forgot password</a>
+            </section>
+        </div>
+        <div class="input-submit">
+            <button class="submit-btn" id="submit">Sign In</button>
+        </div>
+        <div class="sign-up-link">
+            <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === '' || password === '') {
+                alert('Please fill in both fields.');
+            } else {
+                // You can replace this with actual login logic
+                alert(`Logging in with:\nEmail: ${email}\nPassword: ${password}`);
+            }
+        });
+    </script>
+</body>
+</html>
